@@ -19,6 +19,8 @@ String site = "";
 String customer = "";
 String project = "";
 
+Random random1 = new Random();
+
 for (int count = 1; count <= 4; count++) {
 
          site = "S" + count ;
@@ -27,7 +29,8 @@ for (int count = 1; count <= 4; count++) {
                     customer = "GE-ELECTRIC";
                     for(int i = 1 ; i<= 4; i++){
                     	 turbine = "T" + i ;
-                    	 generateOtherData(turbine, site, customer, project);
+                    	 int status = random1.nextInt(8);
+                    	 generateOtherData(turbine, site, customer, project, status);
                     	 
                     }
                     break;
@@ -35,7 +38,8 @@ for (int count = 1; count <= 4; count++) {
                     customer = "DTE Energy";
                     for(int i = 1 ; i<= 4; i++){
                    	 turbine = "T" + i ;
-                   	 generateOtherData(turbine, site, customer, project);
+                   	int status = random1.nextInt(8);
+                   	 generateOtherData(turbine, site, customer, project,status);
                    	 
                    }
                     break;
@@ -43,7 +47,8 @@ for (int count = 1; count <= 4; count++) {
                     customer = "Public Service Elec & Gas";  
                     for(int i = 1 ; i<= 3; i++){
                    	 turbine = "T" + i ;
-                   	 generateOtherData(turbine, site, customer, project);
+                     int status = random1.nextInt(8);
+                   	 generateOtherData(turbine, site, customer, project,status);
                    	 
                    }
                     break;
@@ -51,7 +56,8 @@ for (int count = 1; count <= 4; count++) {
                     customer = "Duke Energy Carolinas";
                     for(int i = 1 ; i<= 5; i++){
                    	 turbine = "T" + i ;
-                   	 generateOtherData(turbine, site, customer, project);
+                     int status = random1.nextInt(8);
+                   	 generateOtherData(turbine, site, customer, project,status);
                    	 
                    }
                     break;
@@ -62,7 +68,7 @@ for (int count = 1; count <= 4; count++) {
 
      }
      }
-public void generateOtherData(String turbine,String site,String customer,String project){
+public void generateOtherData(String turbine,String site,String customer,String project,int status1){
 	String parameters = "";
 	
 	String status = "" ;
@@ -81,8 +87,6 @@ voltage = ThreadLocalRandom.current().nextDouble(rangeMinV, rangeMaxV);
 
 voltage = Double.valueOf(df.format(voltage));
    
-     Random random1 = new Random();
-     int status1 = random1.nextInt(8);
      if (status1 == 0){
          status = "0";
          voltage = 0.0;
@@ -92,7 +96,7 @@ voltage = Double.valueOf(df.format(voltage));
       
        try {
           parameters = "{\"turbine\":\""+turbine+"\",\"site\":\""+site+"\",\"customer\":\""+customer+"\",\"project\":\""+project+"\", \"status\":"+status+", \"temperature\":"+temperature+", \"voltage\":"+voltage+"} ";
-        //  System.out.println(parameters);
+        // System.out.println(parameters);
         
  StringEntity params =new StringEntity(parameters);
 
