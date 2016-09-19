@@ -10,7 +10,7 @@ public class SchedulerMain {
 
 		Timer time = new Timer(); // Instantiate Timer Object
 		ScheduledTask st = new ScheduledTask(); // Instantiate SheduledTask class
-		time.schedule(st, 0, 1000*60*5); // Create Repetitively task for every 1 secs
+		time.schedule(st, 0, 1000*60*10); // Create Repetitively task for every 1 secs
 
 		
 	}
